@@ -1,5 +1,6 @@
 # 📋 AUDITORÍA EJECUTIVA MIU
 **Estado: 2026-07-04 | Fuente canónica: miu-ecosistema (Drive)**
+**v2: recortadas secciones 4/7 (metodología genérica duplicada) — ver SKILLS_METODOLOGIA_GENERAL + NEXO_GENERICO_v1.1 para el patrón completo. Este documento queda solo con estado del proyecto MIU.**
 
 ---
 
@@ -63,31 +64,9 @@ Estos son los únicos lugares donde K_i = φ·(D_f/2.5) NO se sostiene — merec
 
 ---
 
-## 4. EL PROBLEMA DE CIRCULARIDAD (SKILL REUTILIZABLE)
+## 4. CIRCULARIDAD DETECTADA EN K_i (caso aplicado)
 
-### Patrón detectado: K_i = φ·D_f/2.5
-
-```
-Definición: K_i = φ · (D_f / 2.5) · (ℓ_corr / ℓ_0)
-Con ℓ_corr = ℓ_0 (asumido), el ratio = 1
-Resultado: K_i = 0.2472 · D_f  (función determinista)
-
-Problema:
-  - K_i es función lineal EXACTA de D_f
-  - Correlación entre K_i y D_f = 1.0 (por definición)
-  - Cualquier afirmación "K_i valida D_f" es tautología
-  - No hay información independiente en K_i
-
-Cómo detectarlo:
-  1. Si Métrica_B = f(Métrica_A), entonces corr(B, A) será perfecta → NO es evidencia independiente
-  2. Si un parámetro está "calibrado contra Dataset_X", no puede "confirmar predicción contra Dataset_X" → es ajuste, no validación
-  3. Si una predicción nunca se congeló ANTES de ver los datos, cualquier "confirmación" posterior es post-hoc → inventada
-```
-
-**Aplicaciones beyond MIU**:
-- Detectar cuándo un modelo de machine learning "valida" su input con una función suya (ej. una red neuronal que recalcula pérdida como "métrica de éxito")
-- Auditar papers científicos: ¿se congelaron predicciones antes de ver los datos?
-- Validaciones de productos: ¿se está midiendo el output del modelo o una función suya?
+Patrón: K_i = φ·(D_f/2.5) — con ℓ_corr=ℓ_0 asumido, K_i queda como función lineal exacta de D_f (K_i = 0.2472·D_f). Correlación K_i↔D_f = 1.0 por definición, no por evidencia. Metodología completa del patrón (cómo detectarlo, aplicaciones fuera de MIU) → ver SKILLS_METODOLOGIA_GENERAL sección 1 y 4.
 
 ---
 
@@ -121,17 +100,9 @@ Se consolidaron 21 citas nuevas sobre:
 
 ---
 
-## 7. REGLAS ANTI-CORRUPCIÓN TRANSFERIBLES
+## 7. REGLAS APLICADAS EN ESTA AUDITORÍA
 
-Aprendidas vía auditoría, aplicables a CUALQUIER proyecto IA/datos:
-
-1. **No asumir métricas sin revisar cálculo** — verifica el código, la fórmula, el dato fuente
-2. **Detectar tautologías** — si Métrica_B = f(Métrica_A), corr≈1 es por construcción, no evidencia
-3. **Congelar predicciones ANTES de datos** — sin timestamp + archivo, no hay predicción, hay post-hoc
-4. **DOI/ISBN verificable** — si no está en CrossRef/ISBN registry, registrarlo como REPORTADO, no SÉ
-5. **Brechas explícitas** — mejor decir "no sé" que omitir, mejor listar FASE pendiente que inventar cobertura
-6. **Parámetro calibrado ≠ predicción confirmada** — ajuste (fit) es distinto de validación (test)
-7. **No heredar "SÉ" ajeno** — otra instancia/paper dice "SÉ" → tu nivel es REPORTADO hasta re-verificar
+Las 7 reglas anti-corrupción genéricas usadas para producir este documento están en SKILLS_METODOLOGIA_GENERAL sección 7 y NEXO_GENERICO sección I — no se repiten acá. Aplicación específica a MIU: regla 3 (congelar predicciones) es la causa raíz de FASE 4 (sección 2); regla 6 (parámetro≠predicción) es la causa raíz del rechazo de K_i (sección 4).
 
 ---
 
@@ -159,4 +130,6 @@ Aprendidas vía auditoría, aplicables a CUALQUIER proyecto IA/datos:
 - **Auditoría ejecutada:** 2026-07-04
 - **Fuentes verificadas:** PROTOCOLO_MIU, NUCLEO_TEORICO_MIU, MIU_CHECKPOINT, BRIEFING-AA/AB (FranBot)
 - **Cambios respecto a v1:** consolidadas tandas 09-32 de bibliografía (~50 citas nuevas), rechazado MIU_V12.0, confirmado FranBot limpio de K_i
+- **Cambios v1→v2:** recortadas secciones 4 y 7 (contenido metodológico genérico, ahora vive solo en SKILLS_METODOLOGIA_GENERAL y NEXO_GENERICO_v1.1) — documento queda enfocado 100% en estado MIU
 - **Próximo hito:** datos de anomalías (microbioma, corales) para investigación FASE 2/3
+- 
