@@ -1,1 +1,1 @@
-Eliminar de rutas productivas los archivos TEST contaminantes replicados; conservar pruebas legítimas bajo `tests/fixtures/` con nombres, propósito y expectativas claras. Añadir regla CI que impida publicar `TEST_*`, `SKILL_Test`, `DATO_Test` o `HUESO_Test` fuera de fixtures autorizados.
+Eliminar de las rutas productivas los archivos TEST contaminantes replicados en `miu-portable-registry`, `miu-portable-skills` y datos portables. Conservar únicamente fixtures explícitos bajo `tests/fixtures/`, con README, alcance y CI que impida publicarlos como registros reales.
