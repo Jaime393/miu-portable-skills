@@ -1,0 +1,1 @@
+Centralizar la selección de modelos en una configuración única, localizar las 5 skills dependientes de modelos Groq/DeepSeek retirados y migrarlas a modelos vigentes con fallback probado. Actualizar auditoría, ejemplos y tests; prohibir identificadores de modelo duplicados dentro de cada skill.
