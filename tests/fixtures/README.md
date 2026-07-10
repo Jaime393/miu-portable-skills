@@ -1,0 +1,1 @@
+Auditar y retirar de ramas productivas los archivos TEST contaminantes de `miu-portable-registry`, `miu-portable-skills` y `miu-portable-data` si existe; conservar pruebas legítimas bajo `tests/fixtures/` con propósito y aserciones. Añadir CI que impida publicar `TEST_*`, `HUESO_Test_*`, `DATO_Test_*` o stubs fuera de rutas permitidas.
