@@ -1,0 +1,1 @@
+Centralizar selección de proveedores/modelos en una configuración ejecutable y eliminar referencias a modelos retirados de Groq/DeepSeek y al endpoint HF obsoleto. Incorporar health checks, fallback, timeouts y pruebas sin secretos. Migrar las cinco skills afectadas y documentar la matriz proveedor/modelo vigente; no copiar afirmaciones de disponibilidad sin prueba de API.
