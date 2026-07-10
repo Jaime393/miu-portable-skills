@@ -1,0 +1,1 @@
+Eliminar o archivar los archivos TEST contaminantes de miu-portable-registry, miu-portable-skills y miu-public-data. Conservar fixtures útiles bajo tests/fixtures con nombres inequívocos y añadir una regla CI que impida TEST/HUESO/DATO de demostración en rutas productivas.
