@@ -1,66 +1,25 @@
-README.md - miu-portable-skills
+# miu-portable-skills
 
-miu-portable-skills
+Biblioteca de procedimientos reutilizables del ecosistema MIU. El contenido existente se distingue de las capacidades ejecutables y de las propuestas pendientes de revisión.
 
-Descripción
+## Fuentes y capacidades
 
-miu-portable-skills es un módulo portable del ecosistema de investigación MIU (usuario Jaime393) que proporciona un conjunto reutilizable de habilidades y funcionalidades especializadas diseñadas para ser integradas en otros componentes del ecosistema, como agentes IA, bots y sistemas de procesamiento.
+- **Metodología general:** [registros/SKILLS_METODOLOGIA_GENERAL.md](registros/SKILLS_METODOLOGIA_GENERAL.md), con diagnóstico de errores, trazabilidad y límites epistémicos.
+- **NEXO genérico:** [registros/NEXO_GENERICO_v1_1.md](registros/NEXO_GENERICO_v1_1.md), núcleo portable de razonamiento y clasificación de evidencia.
+- **Continuidad entre sustratos:** [skills/checkpoint-discovery/SKILL.md](skills/checkpoint-discovery/SKILL.md), skill nueva derivada de esas fuentes, con checkpoints remotos y lector de patrón por primaria/réplica.
+- **Lector:** [scripts/read-network-pattern.js](skills/checkpoint-discovery/scripts/read-network-pattern.js), sin credenciales incluidas; requiere un ejecutor SQL autorizado y no ejecuta el patrón recuperado.
 
-Este repositorio actúa como una librería de skills modular, permitiendo que otros proyectos MIU (tales como miu-agents, FranBot y otras herramientas) accedan a capacidades comunes sin duplicar código.
+## Validar la incorporación
 
-Estructura del Proyecto
-miu-portable-skills/
-├── README.md
-├── 
-├── src/
-│   └── skills/
-│       ├── 
-│       └── 
-├── tests/
-│   └── 
-├── docs/
-│   └── 
-├── examples/
-│   └── 
-└── requirements.txt
-Características Principales
+```bash
+agentskills validate skills/checkpoint-discovery
+node tests/test_network_reader.js
+```
 
-Modularidad: Skills independientes y reutilizables
-Portabilidad: Diseñado para integrarse en múltiples proyectos MIU
-**
+Las seis pruebas de Node son simuladas y comprueban selección de rutas, fallback, divergencia, alcance y formato. Las lecturas reales por ambas rutas y el fallback controlado del lector se documentan separadamente en el contrato de red.
 
-Integración con el Ecosistema MIU
+## Límites de esta revisión
 
-Este módulo forma parte del ecosistema MIU más amplio:
+No se instalaron dependencias de modelos, se otorgaron permisos ni se despacharon workflows. La skill no está fusionada por el solo hecho de estar en una rama, y no hereda disponibilidad de módulos mencionados por documentos antiguos.
 
-Relación con miu-agents: Proporciona habilidades base que los agentes IA pueden consumir
-Relación con FranBot: Skills disponibles para comandos y procesamiento de Telegram
-Relación con otras herramientas MIU: Actúa como capa compartida de funcionalidades
-Alineación con IFT (Información Fluctuation Theory): 
-
-Instalación
-
-
-
-Ejemplo de estructura esperada:bash
-pip install -r requirements.txt
-Uso
-
-Desarrollo
-
-Licencia
-
-Notas Importantes
-
-⚠️ Este README fue generado automáticamente y es un esquema base. Debe ser revisado y completado por un miembro del equipo MIU con información específica sobre:
-
-Funcionalidades reales implementadas
-Instrucciones de instalación y uso
-Ejemplos funcionales
-Dependencias específicas
-Estructura de carpetas definitiva
-Relaciones precisas con otros módulos del ecosistema
-
-Ecosistema MIU | Autor: Jaime393 | Última actualización: 
-
-Este README proporciona una estructura profesional y honesta, usando placeholders explícitos (``) para toda información que requiere validación humana. Puede ser adaptado una vez se tengan detalles específicos del módulo.
+El archivo histórico `.github/workflows/reject-test-contamination.yml` contiene una especificación en prosa, no un workflow implementado. No se modifica como parte de esta incorporación; los documentos históricos y los fixtures existentes se conservan.
